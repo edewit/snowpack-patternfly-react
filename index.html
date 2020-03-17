@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello</title>
+    <link rel="stylesheet" type="text/css" href="./node_modules/@patternfly/patternfly/patternfly.min.css">
+    <script>
+      const require = (package) => { console.log('trying to require package', package) }
+    </script>
+  </head>
+  <body>
+    <div id="app" style="height: 100%;"></div>
+    <script type="module" src="lib/app.js"></script>
+  </body>
+</html>
