@@ -3,9 +3,7 @@
     [
       "snowpack/assets/babel-plugin.js",
       {}
-    ],
-    "@babel/proposal-class-properties",
-    "@babel/proposal-object-rest-spread"
+    ]
   ],
   "presets": [
     "@babel/preset-react",

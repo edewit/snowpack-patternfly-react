@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "prepare": "snowpack",
+    "babel": "babel --source-maps --extensions \".js,.ts,.tsx\" src/ --out-dir lib/",
+    "start": "yarn babel && yarn live-server"
+  },
   "dependencies": {
     "@patternfly/patternfly": "^2.68.4",
     "@patternfly/react-core": "^3.146.0",
