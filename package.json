@@ -4,7 +4,6 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "prepare": "snowpack",
     "babel": "babel --source-maps --extensions \".js,.ts,.tsx\" src/ --out-dir lib/",
     "start": "yarn babel && yarn live-server"
   },
