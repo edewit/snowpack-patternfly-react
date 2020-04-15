@@ -2,6 +2,8 @@ const postcss = require('rollup-plugin-postcss');
 
 module.exports = {
   rollup: {
-    plugins: [postcss()]
+    plugins: [postcss({
+      extract: 'lib/app.css'
+    })]
   }
 };

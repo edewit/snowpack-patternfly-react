@@ -2,6 +2,7 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import { Alert, AlertActionCloseButton, Button, Page, PageHeader, PageSidebar, PageSection, PageSectionVariants } from '@patternfly/react-core';
+import { PaginationTop } from './page.js';
 
 const App = () => {
   const x: number = 0;
@@ -34,6 +35,7 @@ const App = () => {
         </Alert>
         <h1>Hello world!</h1>
         <Button variant="primary">Button</Button>
+        <PaginationTop />
       </PageSection>
     </Page>
   );

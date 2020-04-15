@@ -8,8 +8,7 @@
     "start": "yarn babel && yarn live-server"
   },
   "dependencies": {
-    "@patternfly/patternfly": "^2.68.4",
-    "@patternfly/react-core": "^3.146.0",
+    "@patternfly/react-core": "^3.153.3",
     "react": "npm:@pika/react",
     "react-dom": "npm:@pika/react-dom"
   },
