@@ -1,28 +1,28 @@
-import React from "react";
-import { Pagination } from "@patternfly/react-core";
+import React, { ReactNode } from 'react';
+import { Pagination } from '@patternfly/react-core';
 
 export class PaginationTop extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
     this.state = {
       page: 1,
-      perPage: 20
-    }
+      perPage: 20,
+    };
   }
 
-  private onSetPage(_event: any, pageNumber: any): void {
+  private onSetPage = (_event: any, pageNumber: any): void => {
     this.setState({
-      page: pageNumber
+      page: pageNumber,
     });
   };
 
-  private onPerPageSelect(_event: any, perPage: any): void {
+  private onPerPageSelect = (_event: any, perPage: any): void => {
     this.setState({
-      perPage
+      perPage,
     });
   };
 
-  render(): React.ReactNode {
+  render(): ReactNode {
     return (
       <Pagination
         itemCount={523}

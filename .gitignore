@@ -126,3 +126,6 @@ sketch
 
 # snowpack
 web_modules/
+build/
+.build/
+public/assets/
