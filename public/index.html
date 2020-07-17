@@ -1,18 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="/favicon.ico" />
-    <link rel="stylesheet" href="/index.css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Web site created using create-snowpack-app" />
-    <title>Snowpack App</title>
-  </head>
-  <body style="height: 100%;">
-    <div id="app" style="height: 100%;"></div>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <script type="module" src="/_dist_/index.js"></script>
-    <!--
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="/index.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Web site created using create-snowpack-app" />
+  <title>Snowpack App</title>
+</head>
+
+<body style="height: 100%;">
+
+  <div class="pf-c-page">
+    <header class="pf-c-page__header">
+      <div class="pf-c-page__header-brand">
+        <div class="pf-c-page__header-brand-toggle">toggle</div>
+        <a class="pf-c-page__header-brand-link">
+          <img class="pf-c-brand" src="/logo.svg" alt="Keycloak logo" style="height: 35px;"/>
+        </a>
+      </div>
+      <div class="pf-c-page__header-tools">header-tools</div>
+    </header>
+    <div class="pf-c-page__sidebar">
+      <div class="pf-c-page__sidebar-body">
+        <!-- navigation -->
+        <nav class="pf-c-nav" aria-label="Global">
+          <ul class="pf-c-nav__list">
+            <li class="pf-c-nav__item">
+              <a href="#" class="pf-c-nav__link">Link 1</a>
+            </li>
+            <li class="pf-c-nav__item">
+              <a href="#" class="pf-c-nav__link pf-m-current" aria-current="page">Current link</a>
+            </li>
+            <li class="pf-c-nav__item">
+              <a href="#" class="pf-c-nav__link">Link 3</a>
+            </li>
+            <li class="pf-c-nav__item">
+              <a href="#" class="pf-c-nav__link">Link 4</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <main class="pf-c-page__main" tabindex="-1">
+      <section class="pf-c-page__main-section">
+        <div id="app" style="height: 100%; display: none">
+          <div>
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+              style="margin: auto; background: rgb(255, 255, 255); display: block; shape-rendering: auto;" width="200px"
+              height="200px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+              <path d="M10 50A40 40 0 0 0 90 50A40 42 0 0 1 10 50" fill="#5DBCD2" stroke="none"
+                transform="rotate(16.3145 50 51)">
+                <animateTransform attributeName="transform" type="rotate" dur="1s" repeatCount="indefinite" keyTimes="0;1"
+                  values="0 50 51;360 50 51"></animateTransform>
+              </path>
+            </svg>
+          </div>
+        </div>
+
+        <div id="welcome" style="height: 100%;"></div>
+      </section>
+    </main>
+  </div>
+
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <script type="module" src="/_dist_/index.js"></script>
+  <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
 
@@ -22,5 +76,6 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-  </body>
+</body>
+
 </html>

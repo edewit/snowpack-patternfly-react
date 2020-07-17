@@ -30,3 +30,7 @@ declare module '*.webp' {
   const ref: string;
   export default ref;
 }
+declare module '*.json' {
+  const value: any;
+  export default value;
+}
