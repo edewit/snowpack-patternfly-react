@@ -15,15 +15,14 @@
   <div class="pf-c-page">
     <header class="pf-c-page__header">
       <div class="pf-c-page__header-brand">
-        <div class="pf-c-page__header-brand-toggle">toggle</div>
         <a class="pf-c-page__header-brand-link">
-          <img class="pf-c-brand" src="/logo.svg" alt="Keycloak logo" style="height: 35px;"/>
+          <img class="pf-c-brand brand" src="/logo.svg" alt="Keycloak logo"/>
         </a>
       </div>
       <div class="pf-c-page__header-tools">header-tools</div>
     </header>
     <div class="pf-c-page__sidebar">
-      <div class="pf-c-page__sidebar-body">
+      <div class="pf-c-page__sidebar-body" id="nav">
         <!-- navigation -->
         <nav class="pf-c-nav" aria-label="Global">
           <ul class="pf-c-nav__list">
@@ -65,6 +64,9 @@
   </div>
 
   <noscript>You need to enable JavaScript to run this app.</noscript>
+  <script>
+    const features = {};
+  </script>
   <script type="module" src="/_dist_/index.js"></script>
   <!--
       This HTML file is a template.

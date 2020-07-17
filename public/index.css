@@ -1,1 +1,5 @@
-@import "patternfly.css";
+@import "patternfly.min.css";
+
+.brand {
+  height: 35px;
+}

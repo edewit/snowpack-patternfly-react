@@ -41,12 +41,24 @@ const template = `
 const welcomeBlock = document.getElementById('welcome')!;
 const appBlock = document.getElementById('app')!;
 
-export default function() {
+export default function () {
   const rendered = dot.compile(template)(content);
   welcomeBlock.innerHTML = rendered;
+
+  const removeHidden = (content: any) => {
+    content.forEach((c: any) => {
+      if (c.hidden && eval(c.hidden)) {
+        document.getElementById('landing-' + c.id)!.remove();
+      }
+      if (c.content) {
+        removeHidden(c.content);
+      }
+    });
+  };
+  removeHidden(content);
 }
 
 (window as any).toggle = () => {
   welcomeBlock.style.display = 'none';
   appBlock.style.display = 'block';
-}
+};
