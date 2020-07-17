@@ -1,6 +1,9 @@
 import dot from 'dot';
 import content from './content.json';
 
+import i18next from 'i18next';
+import { initOptions } from './i18n';
+
 const template = `
 <section class="pf-c-page__main-section">
   <div class="pf-l-gallery pf-m-gutter">
@@ -14,21 +17,23 @@ const template = `
               {{?? card.iconSvg}}
                 <img src="{{=card.iconSvg}}" alt="icon"/>&nbsp;
               {{?}}
-              {{=card.label}}
+              {{=t(card.label)}}
             </h2>
-            {{? card.descriptionLabel}}
-              <p>{{=card.descriptionLabel}}</p>
-            {{?}}
         </div>
-        <div class="pf-c-card__body pf-c-content">
+        <div class="pf-c-card__body">
+          {{? card.descriptionLabel}}
+            <p>{{=t(card.descriptionLabel)}}</p>
+          {{?}}
+        </div>
+        <div class="pf-c-card__footer">
           {{? card.content}}
             {{~card.content :sub}}
               <div id="landing-{{=sub.id}}">
-                <a onclick="toggle(); window.location.hash='{{=sub.path}}'">{{=sub.label}}</a>
+                <a onclick="toggle(); window.location.hash='{{=sub.path}}'">{{=t(sub.label)}}</a>
               </div>
             {{~}}
           {{??}}
-            <a id="landing-{{=card.id}}" onclick="toggle(); window.location.hash = '{{=card.path}}'">{{=card.label}}</a>
+            <a id="landing-{{=card.id}}" onclick="toggle(); window.location.hash = '{{=card.path}}'">{{=t(card.label)}}</a>
           {{?}}
         </div>
       </div>
@@ -42,20 +47,23 @@ const welcomeBlock = document.getElementById('welcome')!;
 const appBlock = document.getElementById('app')!;
 
 export default function () {
-  const rendered = dot.compile(template)(content);
-  welcomeBlock.innerHTML = rendered;
+  i18next.init(initOptions, (_, t) => {
+    (window as any).t = t;
+    const rendered = dot.compile(template)(content);
+    welcomeBlock.innerHTML = rendered;
 
-  const removeHidden = (content: any) => {
-    content.forEach((c: any) => {
-      if (c.hidden && eval(c.hidden)) {
-        document.getElementById('landing-' + c.id)!.remove();
-      }
-      if (c.content) {
-        removeHidden(c.content);
-      }
-    });
-  };
-  removeHidden(content);
+    const removeHidden = (content: any) => {
+      content.forEach((c: any) => {
+        if (c.hidden && eval(c.hidden)) {
+          document.getElementById('landing-' + c.id)!.remove();
+        }
+        if (c.content) {
+          removeHidden(c.content);
+        }
+      });
+    };
+    removeHidden(content);
+  });
 }
 
 (window as any).toggle = () => {
