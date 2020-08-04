@@ -25,5 +25,9 @@ export function DataLoader<T>(props: DataLoaderProps<T>) {
     }
     return props.children;
   }
-  return <Spinner />;
+  return (
+    <div style={{ textAlign: 'center' }}>
+      <Spinner />
+    </div>
+  );
 }

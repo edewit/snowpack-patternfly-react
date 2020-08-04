@@ -1,27 +1,26 @@
-import React, { Fragment } from 'react';
-import { Alert, AlertActionCloseButton, Button } from '@patternfly/react-core';
-import { RedoIcon } from '@patternfly/react-icons';
-import { useTranslation, Trans } from 'react-i18next';
+import React, { useContext } from 'react';
 
-import { PaginationTop } from './Page';
+import { ClientList } from './clients/ClientList';
+import { DataLoader } from './components/data-loader/DataLoader';
+import { KeycloakContext } from './auth/KeycloakContext';
 
 export const App = () => {
-  const { t } = useTranslation();
+  const keycloak = useContext(KeycloakContext);
+
+  const loader = async () => {
+    return await fetch(
+      'http://localhost:8180/auth/admin/realms/master/clients?first=0&max=20&search=true',
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer ' + (await keycloak?.getToken()),
+        },
+      }
+    ).then((res) => res.json());
+  };
   return (
-    <Fragment>
-      <Alert
-        variant="default"
-        title="Default alert title"
-        actionClose={<AlertActionCloseButton />}
-      >
-        <RedoIcon />
-        <Trans i18nKey="infoAlert">
-          Info alert description. <a href="#">This is a link.</a>
-        </Trans>
-      </Alert>
-      <h1>{t('Welcome to React')}</h1>
-      <Button variant="primary">Button</Button>
-      <PaginationTop />
-    </Fragment>
+    <DataLoader loader={loader}>
+      {(clients) => <ClientList clients={clients} />}
+    </DataLoader>
   );
 };

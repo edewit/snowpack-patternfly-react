@@ -10,8 +10,9 @@
       "signingIn": "Signing In",
       "device-activity": "Device Activity",
       "applications": "Applications",
-      "applicationsIntroMessage": "Track and manage your app permission to access your account"
-
+      "applicationsIntroMessage": "Track and manage your app permission to access your account",
+      "fullName": "{{givenName}} {{familyName}}",
+      "unknownUser": "Anonymous"
     }
   }
 }

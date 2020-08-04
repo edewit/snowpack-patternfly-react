@@ -1,4 +1,6 @@
 import dot from 'dot';
+import { KeycloakInstance } from 'keycloak-js';
+
 import content from './content.json';
 
 import i18next from 'i18next';
@@ -45,6 +47,38 @@ const template = `
 
 const welcomeBlock = document.getElementById('welcome')!;
 const appBlock = document.getElementById('app')!;
+const userNameBlock = document.getElementById('username')!;
+
+type Token = {
+  given_name: string;
+  family_name: string;
+  preferred_username: string;
+};
+
+const loggedInUserName = (t: Function, tokenParsed: Token) => {
+  let userName = t('unknownUser');
+  if (tokenParsed) {
+    const givenName = tokenParsed.given_name;
+    const familyName = tokenParsed.family_name;
+    const preferredUsername = tokenParsed.preferred_username;
+    if (givenName && familyName) {
+      userName = t('fullName', { givenName, familyName });
+    } else {
+      userName = givenName || familyName || preferredUsername || userName;
+    }
+  }
+  return userName;
+};
+
+export function setLoggedInName(keycloak: KeycloakInstance) {
+  i18next.init(initOptions, (_, t) => {
+    (window as any).t = t;
+    userNameBlock.innerHTML = loggedInUserName(
+      t,
+      keycloak.tokenParsed as Token
+    );
+  });
+}
 
 export default function () {
   i18next.init(initOptions, (_, t) => {
