@@ -1,10 +1,12 @@
 import React from 'react';
 import { Nav, NavItem, NavList } from '@patternfly/react-core';
+import { RealmSelector } from './components/realm-selector/RealmSelector';
 
 export const PageNav = () => {
   return (
     <Nav>
       <NavList>
+        <RealmSelector realm="Master" realmList={['Photoz']} />
         <NavItem id="default-link1" to="#default-link1" itemId={0}>
           Link 1
         </NavItem>
